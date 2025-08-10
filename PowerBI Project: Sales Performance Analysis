@@ -1,0 +1,45 @@
+# 📊 Sales Performance Analysis Project – Power BI Dashboard
+
+## 📝 Project Overview
+- This project is part of the Microsoft Power BI Desktop for Business Intelligence course by Maven Analytics. The goal was to design an interactive business intelligence dashboard to analyze 
+sales performance across products, customers, and regions for a fictional company called AdventureWorks.
+- Starting out with raw csv data, my role as the business analyst was to transform and model these raw datasets and develop a series of report views that would be best suited for stakeholders like our executives and Product Managers to easily review important metrics
+about the company.
+
+The dashboard provides actionable insights for stakeholders, helping identify:
+- High-performing product categories
+- Global sales trends
+- Customer profitability
+- Monthly revenue patterns
+
+## Report View Pages
+- **Executive Dashboard**:
+  - A "Bottom Line Up Front" dashboard for the executive team to easily focus on the critical KPIs for the company.
+      - KPI cards such as: Revenue, Profit, Total Orders, and Return Rate.  Other KPI cards (i.e. Monthly Revenue, Monthly Orders, Monthly Returns) contains color coded target labels based off the previous months' metrics and current target metrics to 
+      indicate whether or not targets were met for the current month.
+  - Revenue Trending: a line chart depicting month-over-month revenue.  A slider scale was added for the viewer 
+      - 
+- **Map**:
+- **Product Detail**:
+- **Customer Detail**:
+- **Key Influencers**:
+- **Q&A**:
+- **Decomposition Tree**:
+
+## 🔍 Key Skills Demonstrated
+- **Data Cleaning & Modeling**: Transformed raw sales data, created relationships, and built a star schema model.
+- **DAX Calculations**: Developed measures for revenue, profit margin, YTD totals, and percentage growth.
+- **Data Visualization**: Designed interactive charts, KPIs, and slicers for user-driven analysis.
+- **Business Insight Generation**: Interpreted results to guide strategic sales decisions.
+
+## 🛠 Tools & Technologies
+- **Power BI Desktop** – Dashboard creation, DAX measures, data modeling
+- **Power Query** – Data transformation & cleaning
+- **DAX** – Calculated columns and measures
+- **Excel** – Source data inspection
+
+## Key takeaways from this project:
+- This end-to-end project combines my business acumen with my analytics experience to demonstrates my abilities to translate complex, large scale datasets into actionable insights through the use of dashboard design and report storytelling.  
+- The underlying data analytics skills used in order to create this project include but are not limited to: importing raw data (csv files) into into cleaning data sets, connecting and shaping data through the use of Power Query, 
+data modeling (using start and snowflake schemas), creating calculated fields and measures using DAX, creating meaningful dashboards using PowerBI's Report View, and diving deeper into data insights using PowerBI's AI tools like: Anomaly detection, 
+smart narratives, Q&A visuals, decomposition trees, and a categorical analysis using Power BI's key influencers AI tool.
