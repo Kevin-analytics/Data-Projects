@@ -3,8 +3,9 @@
 ## 📝 Project Overview
 - This project is part of the Microsoft Power BI Desktop for Business Intelligence course by Maven Analytics. The goal was to design an interactive business intelligence dashboard to analyze 
 sales performance across products, customers, and regions for a fictional company called AdventureWorks.
-- Starting out with raw csv data, my role as the business analyst was to transform and model these raw datasets and develop a series of report views that would be best suited for stakeholders like our executives and Product Managers to easily review important metrics
-about the company.
+
+- Starting out with raw csv data, my role as the business analyst was to transform and model these raw datasets and develop a series of report views that would be best suited for stakeholders 
+like our executives and Product Managers to easily review important metrics about the company.
 
 The dashboard provides actionable insights for stakeholders, helping identify:
 - High-performing product categories
@@ -14,17 +15,86 @@ The dashboard provides actionable insights for stakeholders, helping identify:
 
 ## Report View Pages
 - **Executive Dashboard**:
-  - A "Bottom Line Up Front" dashboard for the executive team to easily focus on the critical KPIs for the company.
-      - KPI cards such as: Revenue, Profit, Total Orders, and Return Rate.  Other KPI cards (i.e. Monthly Revenue, Monthly Orders, Monthly Returns) contains color coded target labels based off the previous months' metrics and current target metrics to 
-      indicate whether or not targets were met for the current month.
-  - Revenue Trending: a line chart depicting month-over-month revenue.  A slider scale was added for the viewer 
-      - 
+  - A "Bottom Line Up Front" dashboard for the executive team to easily focus on the critical KPIs for the company.  Some of the visuals on this page include:
+      - KPI cards such as: Revenue, Profit, Total Orders, and Return Rate.  Other KPI cards (i.e. Monthly Revenue, Monthly Orders, Monthly Returns) contains color coded target labels based off 
+      the previous months' metrics and current target metrics to indicate whether or not targets were met for the current month.
+  
+      - Revenue Trending: a line chart depicting month-over-month revenue.  A slider scale was added for the viewer to adjust the time range.  I utlized PowerBI's "Anomaly Detection" tool to identify 
+      an anomaly in our bike sales during December 2021.  There was an unexpectedly high amount of revenue during this month, so I further analyzed the anomaly by looking at it from variables such as 
+      subcategories and countries.  The model determined that the "Country" variable had a stronger correlation to the anomaly (36%) than the "Subcategory" (13%), which suggests some interesting insights
+      for the USA sales team to take a deeper look into.
+      
+      - Orders by Category: A clustered line bar chart that shows the total orders by category name (bikes, components, clothing, accessories).  There haven't been any sales for accessories yet, 
+      which is why it doesn't show up on the clustered line bar chart.  Also, I incorporated a Category Tip for the "Orders by Category" clustered line bar chart.  This feature shows the viewer weekly orders 
+      by several metrics including: total revenue, total profit, total orders, total returns, and return rate.  This enables more useful information to be at the fingertips of the user, enabling them to derive 
+      more insights, without overwhelming the page, because it only appears when you hover your curser over each of the category bars.
+
+      - Top Ten Products: A table matrix that dynamically shows the top ten products by total orders, in addition to their corresponding revenue and return rate.  These fields are color coded using custom formula-based
+      conditional formatting to more easily detect the highest returned items and the items with the largest orders.
+  
+  - Additional features on this report view include:
+      - Custom buttons for the users to more easily navigate through each report view, clear all pre-existings filters (a "reset button") and a filter button to suggest some fields to filter by.  
+      - Edited report interactions to better control how visuals on a report page affect each other when a user interacts with them.  For example, the Monthly Revenue, Monthly Orders, and Monthly Return KPI cards
+      will not change as the user filters through data points on the "Revenue Trending" line chart because these KPIs highlight the current month's data and shouldn't change.
+
 - **Map**:
+  - An Azure Map which enabled geospatial analytics into my reports.  The users are now able to visualize location data, and see where their sales are doing by looking at total orders across the globe.
+
 - **Product Detail**:
+  - A "DrillThrough" page that dynamically changes based off which product the user decides to drill through from the Executive Dashboard page, and allows the user to get a deeper understanding of the product's performance.
+  Once the user selects which product they want to focus on, this report view provides the following:
+    - Gauge visuals for Monthly Orders, Monthly Revenue and Monthly Profit.  There are monthly target labels for each KPI so the viewer can see if the organization achieved its goals for the given month.  
+    There are also "Callout values" which conditionally formats each gauge to indicate whether targets were met (black font) or not met (red font).
+		- Profit trending: line chart which shows profit over time for this product.  
+    - Product Metrics Trending: an area chart which shows total orders over time for this product.  
+
+  - Additional features on this report view include:
+    - A **Numeric Range Parameter** called "Price Adjustment (%)" to simulate how profit would change ("Adjusted Profit").  The viewer simply changes what price adjustment % they'd like to see, and the graph shows how
+    the adjusted profit would differ from the actual (total) profit.
+    - I created a **Field Parameter** in which the user can interactively choose 1 of 5 key metrics to look at on the Product Metrics Trending area chart.  
+    To do this, the user simply has to select one of the five options on the Filed Parameter visual called "Product Metric Selection," which is found to the left of the area chart.
+    - Built a "Report Summary" visual on the bottom right of the screen to generate additional insights, using the "Smart Narratives" tool, an AI powered tool offered by PowerBI.
+
+
 - **Customer Detail**:
-- **Key Influencers**:
-- **Q&A**:
+  - A report for learning more about who are customers are, how they behave, and what drives revenue.  Some visuals include:
+    - KPI Cards such as Unique Customers and Revener Per Customer.  Understanding this measure reach and market penetration, as well as calculating customer lifetime value (CLV).
+    - Weekly Customers: a line chart revealing customer trends over time, and allows the company to identify seasonality, campaign impacts, and churn patters.
+    - Donut Charts such as "Income Level" and "Occupation" help illustrate purchasing power distribution, and supports targeted marketing and product development.
+    - Top 100 Customers: a table showing our top 100 customers by revenue as well as their corresponding orders and revenue.  This helps identify high-value customers for loyalty programs 
+    and helps assess revenue concentration risk (i.e. is the company heavily dependent on a number of clients).
+    - Additional KPI cards like "Top Customer by Revenue," "Orders," and "Revenue" spotlights our most valuable customer, and can be useful for account management.
+
+  - Additional features on this report view include:
+    - Additional AI-Powered Insights utilizing PowerBI's "Smart Narratives" tool.  The user can hover over the "Smart Narrative" icon found on the "Orders by Income Level" donut chart visual to see what insights were found. 
+
 - **Decomposition Tree**:
+  - I created a decomposition tree to further look into return rates.  I set up the decomposition tree such that it would analyze return rates by variables like "CategoryName," "SubcategoryName," and "ProductName."  
+  - Using this, I was able to more easily identify trends and quickly learned that our "Bikes" categories had the highest return rates.  
+  - More notably, the "Road-650 Red, 52" Product produced a ~12% return rate out of the 51 total orders.  This insight would be reported to our sales and marketing team so we can better understand the root cause
+  of this high return rate.
+
+
+- **Key Influencers**:
+  - I created a "Key Influencers" report view to conduct a categorical analysis to determine which factors in my dataset had the largest impact on identifying homeowners.  PowerBI's "Key Influencers" tool helps you identify 
+  statistically significant factors that help drive metrics or outcomes.  PowerBI's Key Influencers tool is very useful for analysts because it runs linear and logistics regression models to quantify the relationships 
+  between the variables in the dataset.
+  - I wanted to identify factors that display a high correlation with owning a home, because I think homeowners would be a good customer segment to target a new marketing campaign to purchase our bicycles.  
+  Especially because, as we've seen from the decomposition tree, the company has a high return rate with bicycles, and is worried about experiencing an overstock on bicycles.
+  - I used categorical variables like "AnnualIncome", "EducationLevel", "IsParent," "MaritalStatus," and "Occupation" to see any strong correlation with these customers owning a home.
+	- Using our data model, I found that Parents are 1.59 times more likely to own a home than non-parents.
+	- In the top segments view, I was able to determine that 91% of married customers with children and a college degree own a home compared to only 67.6% overall.  
+  - With this knowledge, I would meet up with our sales and marketing leadership team and highly recommend that they begin creating marketing campaigns tailored towards this customer segment.
+
+  
+
+- **Q&A**:
+  - I built a report view called "Q&A", an AI-powered tool which allows the user to ask questions and generate visuals based off PowerBI's understanding of used terminology and the underlying relationships within the data model.  
+	- I created some suggested questions to get started like "Return rate by category" and "Orders by month"
+  - I also developed synonym as a way to train the model, since users may not use the exact terminology used within the model (i.e. "month" is now synonymous with "start of month" so the users can see aggregated orders 
+    for a given month).
+
+
 
 ## 🔍 Key Skills Demonstrated
 - **Data Cleaning & Modeling**: Transformed raw sales data, created relationships, and built a star schema model.
